@@ -1,0 +1,386 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Sachi</title>
+
+<style>
+body{
+    text-align:center;
+    background:linear-gradient(to bottom,#87ceeb,#ffdce7);
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    color:#ff4081;
+}
+
+#game-container{
+    position:relative;
+    width:90vw;
+    max-width:400px;
+    height:40vh;
+    max-height:300px;
+    margin:auto;
+    border:3px solid #ff4081;
+    background:white;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+#score-container{
+    position:absolute;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    background:white;
+    border:2px solid #ff4081;
+    border-radius:10px;
+    padding:5px 12px;
+    font-weight:bold;
+    z-index:10;
+}
+
+.cake{
+    position:absolute;
+    font-size:32px;
+}
+
+#basket{
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80px;
+    height:40px;
+    background:#ffb74d;
+    border-radius:10px;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:15px;
+}
+
+.control-btn{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#ff4081;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.control-btn:hover{
+    transform:scale(1.1);
+}
+
+#birthday-page{
+    display:none;
+    padding:20px;
+    max-width:850px;
+    margin:auto;
+}
+
+.balloons{
+    font-size:60px;
+    animation:float 2s infinite alternate;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-15px);}
+}
+
+.message{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-top:20px;
+    line-height:1.9;
+    font-size:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    text-align:left;
+}
+
+.message p{
+    margin-bottom:20px;
+}
+
+#noteBtn{
+    margin-top:25px;
+    padding:12px 24px;
+    border:none;
+    border-radius:10px;
+    background:#ff4081;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#noteBtn:hover{
+    opacity:.9;
+}
+
+#finalNote{
+    display:none;
+    margin-top:25px;
+    padding:20px;
+    background:white;
+    border-radius:15px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    font-style:italic;
+    color:#555;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+</style>
+</head>
+
+<body>
+
+<div id="game-page">
+
+    <h1>🎂 A Small Birthday Surprise 🎂</h1>
+
+    <p>
+        Catch 7 cakes to unlock a birthday message.
+    </p>
+
+    <div id="game-container">
+
+        <div id="score-container">
+            Score: <span id="score">0</span>/7
+        </div>
+
+        <div id="basket"></div>
+
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" id="left-btn">←</button>
+        <button class="control-btn" id="right-btn">→</button>
+    </div>
+
+</div>
+
+<div id="birthday-page">
+
+    <h1>🎉 Happy Birthday, Sachi 🎉</h1>
+
+    <div class="balloons">
+        🎈✨🎈
+    </div>
+
+    <div class="message">
+
+        <p>
+            I wasn't sure whether I should message you,
+            but I didn't want this day to pass without greeting you.
+        </p>
+
+        <p>
+            I know we're not in the best place right now,
+            and I'm not writing this to bring up old conversations
+            or ask anything from you.
+        </p>
+
+        <p>
+            I just genuinely wanted to wish you a happy birthday.
+        </p>
+
+        <p>
+            I hope you're doing well.
+            I hope you're taking care of yourself,
+            staying safe,
+            and finding reasons to smile even during difficult days.
+        </p>
+
+        <p>
+            I hope the things you're working hard for slowly fall into place.
+            You've always been someone who gives everything to the people
+            and goals you care about,
+            and I sincerely hope life gives some of that kindness back to you.
+        </p>
+
+        <p>
+            One thing I've always admired about you is how deeply you care.
+            Even when people misunderstand your intentions,
+            you still worry about their safety,
+            their future,
+            and the things they might have to go through.
+        </p>
+
+        <p>
+            You carry more than most people realize,
+            and while I know you're strong enough to handle a lot,
+            I still hope this year gives you more reasons to rest,
+            smile,
+            and enjoy the things you've worked so hard for.
+        </p>
+
+        <p>
+            Thank you for the memories we've shared,
+            the conversations we've had,
+            and the parts of yourself you allowed me to know.
+        </p>
+
+        <p>
+            No matter where life takes us from here,
+            I genuinely hope this year treats you kindly.
+        </p>
+
+        <p>
+            Happy Birthday, Sachi.
+        </p>
+
+        <p>
+            Take care of yourself.
+        </p>
+
+        <p>
+            — Zalri
+        </p>
+
+    </div>
+
+    <button id="noteBtn" onclick="showFinalNote()">
+        One Last Thing
+    </button>
+
+    <div id="finalNote">
+        You don't have to reply to this.
+
+        <br><br>
+
+        I just wanted you to know that even from a distance,
+        I'm wishing you a happy birthday
+        and hoping you're doing well.
+    </div>
+
+</div>
+
+<script>
+
+const basket = document.getElementById("basket");
+const gameContainer = document.getElementById("game-container");
+const scoreDisplay = document.getElementById("score");
+
+const leftBtn = document.getElementById("left-btn");
+const rightBtn = document.getElementById("right-btn");
+
+const gamePage = document.getElementById("game-page");
+const birthdayPage = document.getElementById("birthday-page");
+
+let basketPosition = 50;
+let score = 0;
+
+function moveBasket(direction){
+
+    if(direction==="left"){
+        basketPosition=Math.max(10,basketPosition-5);
+    }else{
+        basketPosition=Math.min(90,basketPosition+5);
+    }
+
+    basket.style.left=basketPosition+"%";
+}
+
+leftBtn.addEventListener("click",()=>moveBasket("left"));
+rightBtn.addEventListener("click",()=>moveBasket("right"));
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a"){
+        moveBasket("left");
+    }
+
+    if(e.key==="ArrowRight" || e.key.toLowerCase()==="d"){
+        moveBasket("right");
+    }
+
+});
+
+function createCake(){
+
+    const cake=document.createElement("div");
+
+    cake.classList.add("cake");
+    cake.innerHTML="🎂";
+
+    const left=Math.random()*70+15;
+
+    cake.style.left=left+"%";
+    cake.style.top="0px";
+
+    gameContainer.appendChild(cake);
+
+    function fall(){
+
+        let top=parseInt(cake.style.top)||0;
+
+        top+=2;
+
+        cake.style.top=top+"px";
+
+        if(top>gameContainer.clientHeight-50){
+
+            if(Math.abs(left-basketPosition)<12){
+
+                score++;
+                scoreDisplay.textContent=score;
+
+                if(score>=7){
+                    showBirthdayPage();
+                }
+            }
+
+            cake.remove();
+            return;
+        }
+
+        requestAnimationFrame(fall);
+    }
+
+    requestAnimationFrame(fall);
+}
+
+let gameLoop=setInterval(createCake,700);
+
+function showBirthdayPage(){
+
+    clearInterval(gameLoop);
+
+    gamePage.style.display="none";
+    birthdayPage.style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function showFinalNote(){
+
+    document.getElementById("finalNote").style.display="block";
+
+    document.getElementById("noteBtn").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
+```
