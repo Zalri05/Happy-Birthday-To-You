@@ -145,6 +145,19 @@ h1{
     color:#555;
     box-shadow:0 4px 15px rgba(0,0,0,.1);
 }
+    
+#birthday-message{
+    margin:20px auto;
+    padding:15px 25px;
+    max-width:600px;
+    background:white;
+    border-radius:15px;
+    color:#ff4081;
+    font-size:22px;
+    font-weight:bold;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    transition:opacity .5s ease;
+}
 </style>
 </head>
 
@@ -179,10 +192,14 @@ h1{
 
     <h1>🎉 Happy Birthday, Sachi 🎉</h1>
 
-    <div class="balloons">
-        🎈✨🎈
+    <div id="birthday-message">
+    🎂 Wishing you the happiest birthday!
     </div>
 
+    <div class="balloons">
+    🎈✨🎈
+    </div>
+    
     <div class="message">
 
         <p>
@@ -358,16 +375,68 @@ function createCake(){
 
 let gameLoop=setInterval(createCake,700);
 
+const birthdayMessages = [
+
+    "🎂 Wishing you the happiest birthday!",
+
+    "🎈 May today bring you lots of smiles and laughter!",
+
+    "🎁 I hope all your favorite things find their way to you today.",
+
+    "✨ You deserve happiness, peace, and success this year.",
+
+    "🌷 May this new chapter be kinder and brighter for you.",
+
+    "🍰 Don't forget to enjoy lots of cake today!",
+
+    "💖 You are appreciated more than you realize.",
+
+    "🌟 I hope your wishes slowly become reality.",
+
+    "🎉 Today is your day — enjoy every moment of it.",
+
+    "☀️ Wishing you better days, warm memories, and genuine happiness."
+
+];
+
+let currentMessage = 0;
+
+function startBirthdayMessages(){
+
+    const messageElement =
+        document.getElementById("birthday-message");
+
+    setInterval(() => {
+
+        currentMessage =
+            (currentMessage + 1) % birthdayMessages.length;
+
+        messageElement.style.opacity = "0";
+
+        setTimeout(() => {
+
+            messageElement.textContent =
+                birthdayMessages[currentMessage];
+
+            messageElement.style.opacity = "1";
+
+        }, 300);
+
+    }, 3000);
+}
+    
 function showBirthdayPage(){
 
     clearInterval(gameLoop);
 
-    gamePage.style.display="none";
-    birthdayPage.style.display="block";
+    gamePage.style.display = "none";
+    birthdayPage.style.display = "block";
+
+    startBirthdayMessages();
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
 }
 
@@ -377,6 +446,7 @@ function showFinalNote(){
 
     document.getElementById("noteBtn").style.display="none";
 }
+    
 
 </script>
 
