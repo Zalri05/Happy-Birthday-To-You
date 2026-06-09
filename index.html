@@ -153,10 +153,11 @@ h1{
     background:white;
     border-radius:15px;
     color:#ff4081;
-    font-size:22px;
+    font-size:20px;
     font-weight:bold;
+    text-align:center;
     box-shadow:0 4px 15px rgba(0,0,0,.1);
-    transition:opacity .5s ease;
+    transition:opacity .4s ease;
 }
 </style>
 </head>
@@ -276,6 +277,10 @@ h1{
         One Last Thing
     </button>
 
+    <div id="birthday-message">
+        🎂 Wishing you the happiest birthday!
+    </div>
+
     <div id="finalNote">
         You don't have to reply to this.
 
@@ -285,7 +290,7 @@ h1{
         I'm wishing you a happy birthday
         and hoping you're doing well.
     </div>
-
+   
 </div>
 
 <script>
@@ -408,12 +413,12 @@ function startBirthdayMessages(){
 
     setInterval(() => {
 
-        currentMessage =
-            (currentMessage + 1) % birthdayMessages.length;
-
         messageElement.style.opacity = "0";
 
         setTimeout(() => {
+
+            currentMessage =
+                Math.floor(Math.random() * birthdayMessages.length);
 
             messageElement.textContent =
                 birthdayMessages[currentMessage];
@@ -423,8 +428,7 @@ function startBirthdayMessages(){
         }, 300);
 
     }, 3000);
-}
-    
+} 
 function showBirthdayPage(){
 
     clearInterval(gameLoop);
@@ -435,8 +439,8 @@ function showBirthdayPage(){
     startBirthdayMessages();
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 }
 
